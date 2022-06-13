@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/heartcombo/simple_form.git
+  revision: 23205201a935c7e52c39549756e2ec2e2ec47793
+  specs:
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
+
+GIT
+  remote: https://github.com/openurl/openurl.git
+  revision: d97d6cc9ef803a7edee4749a317abd55939fa900
+  specs:
+    openurl (1.0.0)
+      marc
+      scrub_rb (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -60,6 +76,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    autoprefixer-rails (10.2.5.0)
+      execjs (< 2.8.0)
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
@@ -69,7 +87,10 @@ GEM
     crass (1.0.6)
     diff-lcs (1.5.0)
     erubi (1.10.0)
+    execjs (2.7.0)
     ffi (1.15.5)
+    font-awesome-sass (5.15.1)
+      sassc (>= 1.11)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -77,6 +98,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json (2.6.2)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -85,6 +107,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    marc (1.1.1)
+      rexml
+      scrub_rb (>= 1.0.1, < 2)
+      unf
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
@@ -138,6 +164,7 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -165,6 +192,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scrub_rb (1.0.1)
     semantic_range (3.0.0)
     spring (4.0.0)
     sprockets (4.0.3)
@@ -181,6 +209,9 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.2)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -200,10 +231,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.4)
   byebug
+  font-awesome-sass (~> 5.15)
   jbuilder (~> 2.7)
+  json (~> 2.6.0)
   listen (~> 3.3)
+  openurl!
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -211,6 +246,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails
   sass-rails (>= 6)
+  simple_form!
   spring
   turbolinks (~> 5)
   tzinfo-data
