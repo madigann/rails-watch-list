@@ -31,6 +31,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "json", "~> 2.6.0"
 gem "openurl", github: "openurl/openurl"
 
+gem 'dotenv-rails', groups: [:development, :test]
 
 
 # Reduces boot times through caching; required in config/boot.rb
