@@ -1,21 +1,27 @@
-<div class="cover mb-4 d-flex align-items-center justify-content-center">
-  <div class="text-center text-white">
-    <h1>Save any kind of movies</h1>
-    <h3 class="typed-js" data-controller="typed-js"></h3>
-  </div>
+
+
+<div class="cover container-fluid p-5 text-white text-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(<%= asset_path("cover.jpg") %>)">
+  <h1>Save any kind of movie</h1>
+  <h3 class="typed-js" data-controller="typed-js"></h3>
 </div>
 
 <div class="container py-5">
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">My Lists</h3>
-    <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
+    <h2 class="mb-0">My Lists</h2>
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-primary" %>
   </div>
   <div class="row">
     <% @lists.each do |list| %>
-      <div class="co-12 col-sm-6 col-md-4">
+      <div class="co-12 col-sm-6 col-md-4 p-2">
         <%= link_to list_path(list), class: "text-decoration-none" do %>
-          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path("list_background.jpg") %>)">
-            <%= list.name %>
+          <div class="d-flex card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            <%= link_to list_path(list.id), method: :delete, data: { confirm: "Delete #{list.name}?" } do %>
+              <i class="btn btn-primary" aria-hidden="true"></i>
+            <% end %>
+            <h3>
+              <%= link_to list.name, list_path(list) %>
+              <%#= list.name %>
+            </h3>
           </div>
         <% end %>
       </div>
