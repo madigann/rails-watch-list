@@ -1,19 +1,24 @@
-<div class="position-relative">
-  <div class="card-category card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
-    <h1><%= @list.name %></h1>
+<div id="header" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<%= cl_image_path @list.photo.key, height: 300, scale: :fill %>" class="card-img-top" alt="..." height="300" filter="blur(8px)">
+      <div class="carousel-caption d-none d-md-block">
+        <h2><%= @list.name %></h2>
+      </div>
+    </div>
   </div>
-    <span class="movie-tag"><%= pluralize(@list.movies.size, 'movie') %></span>
+  <span class="movie-tag"><%= pluralize(@list.movies.size, 'movie') %></span>
 </div>
 
-<div class="container py-5">
+<div class="container-sm py-5">
   <div class="d-flex align-items-center justify-content-between mb-3">
   </div>
   <div class="row">
     <% @list.movies.each do |movie| %>
       <div class="co-12 col-sm-6 col-md-4">
-          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
-            <%= movie.title %>
-          </div>
+        <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
+          <%= movie.title %>
+        </div>
       </div>
     <% end %>
   </div>
@@ -21,21 +26,20 @@
 
 <hr>
 
-<h2>Add a Movie</h2>
+<div class="container-sm">
+  <h2>Add a Movie</h2>
 
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%#= f.input :name %>
+    <div class="form-inputs">
+      <%= f.association :movie, collection: Movie.all.order(:title), prompt: "Select a movie", input_html: { data: { controller: "slect2" } } %>
+      <%= f.input :comment, placeholder: "Enter a comment about the movie" %>
+    </div>
 
-
-    <%= f.association :movie, collection: Movie.all.order(:title), prompt: "Select a movie", input_html: { data: { controller: "slect2" } } %>
-    <%= f.input :comment, placeholder: "Enter a comment about the movie" %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions btn btn-success">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
