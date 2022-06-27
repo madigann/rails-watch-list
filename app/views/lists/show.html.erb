@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <% @list.movies.each do |movie| %>
-      <div class="co-12 col-sm-6 col-md-4">
+      <div class="co-12 col-sm-6 col-md-4 my-3">
         <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
           <%= movie.title %>
         </div>
